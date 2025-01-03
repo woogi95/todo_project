@@ -1,20 +1,16 @@
 import { useEffect, useState } from "react";
-import "./gridlevel0.css";
+import "../mandalart/gridLevel0.css";
 
-import GridLevel1_Main from "../mandalartt/GridLevel1_Main";
 import { getGridData } from "../../apis/grid";
+import GridLevel1_MainView from "./GridLevel1_MainView";
 
-function GridLevel0({ projectId }) {
-  console.log("projectId", projectId);
-  // const [isPatch, setIsPatch] = useState(false);
-  // console.log(isPatch);
+function GridLevel0View({ projectId }) {
+  // console.log("projectId", projectId);
   const getGridApiCall = async () => {
     const tempDatas = await getGridData(projectId);
-    setMandalart(tempDatas.mandalart);
-    // setIsPatch(true);
-    setNormalData([
-      // ...resultData.mandalart
 
+    setMandalart(tempDatas.mandalart);
+    setNormalData([
       //0-8
       [
         {
@@ -532,29 +528,20 @@ function GridLevel0({ projectId }) {
         },
       ],
     ]);
-    // console.log("tempData : ", tempDatas.mandalart);
-    // console.log("tempData : ", tempDatas.mandalart[10]?.completedFg);
   };
 
   const [mandalart, setMandalart] = useState([]);
   const [normalData, setNormalData] = useState([]);
-  // console.log(normalData);
 
   useEffect(() => {
     getGridApiCall();
   }, []);
 
-  // useEffect(() => {
-  //   getGridData();
-  //   // console.log(getGridData.data);
-  //   // console.log("normalData : ", normalData);
-  // }, [normalData]);
-
   return (
     <div className="cbox">
       <div className="container">
         <div className="item">
-          <GridLevel1_Main
+          <GridLevel1_MainView
             normalDataIndex={0}
             normalData={normalData}
             setNormalData={setNormalData}
@@ -563,7 +550,7 @@ function GridLevel0({ projectId }) {
           />
         </div>
         <div className="item">
-          <GridLevel1_Main
+          <GridLevel1_MainView
             normalDataIndex={1}
             normalData={normalData}
             setNormalData={setNormalData}
@@ -572,7 +559,7 @@ function GridLevel0({ projectId }) {
           />
         </div>
         <div className="item">
-          <GridLevel1_Main
+          <GridLevel1_MainView
             normalDataIndex={2}
             normalData={normalData}
             setNormalData={setNormalData}
@@ -581,7 +568,7 @@ function GridLevel0({ projectId }) {
           />
         </div>
         <div className="item">
-          <GridLevel1_Main
+          <GridLevel1_MainView
             normalDataIndex={3}
             normalData={normalData}
             setNormalData={setNormalData}
@@ -590,7 +577,7 @@ function GridLevel0({ projectId }) {
           />
         </div>
         <div className="item">
-          <GridLevel1_Main
+          <GridLevel1_MainView
             normalDataIndex={4}
             normalData={normalData}
             setNormalData={setNormalData}
@@ -599,7 +586,7 @@ function GridLevel0({ projectId }) {
           />
         </div>
         <div className="item">
-          <GridLevel1_Main
+          <GridLevel1_MainView
             normalDataIndex={5}
             normalData={normalData}
             setNormalData={setNormalData}
@@ -608,7 +595,7 @@ function GridLevel0({ projectId }) {
           />
         </div>
         <div className="item">
-          <GridLevel1_Main
+          <GridLevel1_MainView
             normalDataIndex={6}
             normalData={normalData}
             setNormalData={setNormalData}
@@ -617,7 +604,7 @@ function GridLevel0({ projectId }) {
           />
         </div>
         <div className="item">
-          <GridLevel1_Main
+          <GridLevel1_MainView
             normalDataIndex={7}
             normalData={normalData}
             setNormalData={setNormalData}
@@ -626,7 +613,7 @@ function GridLevel0({ projectId }) {
           />
         </div>
         <div className="item">
-          <GridLevel1_Main
+          <GridLevel1_MainView
             normalDataIndex={8}
             normalData={normalData}
             setNormalData={setNormalData}
@@ -639,4 +626,4 @@ function GridLevel0({ projectId }) {
   );
 }
 
-export default GridLevel0;
+export default GridLevel0View;

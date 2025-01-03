@@ -87,7 +87,6 @@ function ChangePwPage() {
   const onSubmit = async data => {
     try {
       const result = await changePassword(data); //axios 전송하기
-      console.log(result.resultData);
 
       if (result.resultData === 1) {
         alert("임시 비밀번호가 이메일로 발송되었습니다.");

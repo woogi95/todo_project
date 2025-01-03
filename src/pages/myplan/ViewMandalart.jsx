@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import PopupLayout from "../../components/PopupLayout";
 import { deleteMyplan, getMyPlanData } from "../../apis/myplan";
-import GridLevel0View from "../mandalarttt/GridLevel0View";
 import { getSession } from "../../apis/member";
+import GridLevel0View from "../mandalartview/GridLevel0View";
 
 const LOGIN_SESSION_KEY = "login_session";
 

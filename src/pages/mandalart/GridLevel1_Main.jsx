@@ -36,24 +36,22 @@ function GridLevel1_Main({
   const openModal = id => {
     // 선택된 객체 정보 한개를 보관]
     const nowSelectItem = showData.find(item => item.cellId === id);
-    console.log(
-      normalData[4].find(item => item.mandalartId === showData[4].mandalartId),
-    );
-    if (Array.isArray(showData) && showData[4].title === "") {
-      if (
-        showData[4] === normalData[4]?.[4] &&
-        normalData[4]?.[4].title === ""
-      ) {
-        normalData[4][4].title = "주 목표";
-        alert("주 목표를 먼저 입력해주세요");
-        openModal(normalData[4][4].cellId);
-      }
-      if (showData[4].title === "") {
-        showData[4].title = "서브 목표";
 
-        openModal(showData[4].cellId);
-        alert("서브 목표를 먼저 입력해주세요");
-      }
+    if (
+      (Array.isArray(showData) &&
+        showData[4].title === "" &&
+        showData[4] === normalData[4]?.[4]) ||
+      normalData[4]?.[4].title === ""
+    ) {
+      normalData[4][4].title = "주 목표";
+      alert("주 목표 1 를 먼저 입력해주세요");
+      openModal(normalData[4][4].cellId);
+      return;
+    }
+    if (showData[4].title === "" && normalData[4]?.[4].title !== "") {
+      showData[4].title = "서브 목표";
+      openModal(showData[4].cellId);
+      alert("서브 목표 2 를 먼저 입력해주세요");
     } else {
       setSelectData(nowSelectItem);
       setIsModalOpen(true);
@@ -104,11 +102,10 @@ function GridLevel1_Main({
       });
       return updatedOriginalItem;
     });
-    console.log(updatedNormalData);
-    // console.log(updatedNormalData);
+
     // const uploadDataForm =  selectData.value =>
     //   ;
-    console.log(selectData);
+
     if (selectData.title === "") {
       alert("목표을 입력해주세요");
     }
@@ -127,13 +124,20 @@ function GridLevel1_Main({
         (selectData.startDate === null || selectData.finishDate === null)) ||
       (selectData.startDate < normalData?.[4]?.[4]?.startDate &&
         selectData.finishDate > normalData?.[4]?.[4]?.finishDate);
-    if (selectData.mandalartId === normalData[4]?.[4].mandalartId) {
+    if (
+      selectData.mandalartId === normalData[4]?.[4].mandalartId &&
+      selectData.startDate !== "" &&
+      selectData.finishDate !== ""
+    ) {
       getGridApiCall();
       setIsModalOpen(false);
     } else if (
-      !isDateRangeInvalid ||
       selectData.startDate === null ||
-      selectData.finishDate === null ||
+      selectData.finishDate === null
+    ) {
+      alert("날짜를 확인해주세요.");
+    } else if (
+      !isDateRangeInvalid ||
       isNormalDataInvalid ||
       isNewShowDataInvalid
     ) {
@@ -149,7 +153,6 @@ function GridLevel1_Main({
     );
     try {
       const res = await patchGridData(updatedSelectData); // 서버 동기화
-      console.log(res.data);
     } catch (error) {
       console.error("Error updating data:", error);
     }

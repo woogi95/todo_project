@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./gridLevel1_1.css";
+import "../mandalart/gridLevel1_1.css";
 
 function GridLevel1_MainView({ normalDataIndex, normalData, setNormalData }) {
   const [showData, setShowData] = useState(null);

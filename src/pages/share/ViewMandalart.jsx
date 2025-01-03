@@ -21,7 +21,7 @@ import {
   postCopy,
 } from "../../apis/share";
 import PopupLayout from "../../components/PopupLayout";
-import GridLevel0View from "../mandalarttt/GridLevel0View";
+import GridLevel0View from "../mandalartview/GridLevel0View";
 
 const LOGIN_SESSION_KEY = "login_session";
 

@@ -6,8 +6,8 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import PopupLayout from "../../components/PopupLayout";
-import GridLevel0 from "../mandalarttt/GridLevel0";
 import { getSession } from "../../apis/member";
+import GridLevel0 from "../mandalart/GridLevel0";
 
 const LOGIN_SESSION_KEY = "login_session";
 
